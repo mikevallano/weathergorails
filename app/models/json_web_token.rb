@@ -2,7 +2,7 @@ class JsonWebToken
   def self.encode(payload)
     expiration = 24.hours.from_now.to_i
     JWT.encode(payload.merge(exp: expiration), Rails.application.secrets.secret_key_base)
-    # payload is a hash with a subject and user_id
+    # payload is a hash with a subject key that has a value of a user_id
     # example: JsonWebToken.encode({sub: '1'}), which returns a token that can be decoded
   end
 
